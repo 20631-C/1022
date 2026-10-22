@@ -533,6 +533,51 @@
       box-shadow: var(--card-shadow);
       margin-bottom: 24px;
       position: relative;
+      transition: var(--transition-smooth);
+    }
+
+    .about-mode-view {
+      display: none;
+      animation: modeFadeIn 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    .about-mode-view.active {
+      display: block;
+    }
+
+    @keyframes modeFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(14px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .mode-tag-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      padding: 5px 18px;
+      border-radius: var(--radius-pill);
+      margin-bottom: 16px;
+      box-shadow: 0 4px 12px rgba(255, 133, 162, 0.15);
+    }
+
+    .extrovert-tag {
+      background: linear-gradient(135deg, #fff0f3 0%, #ffe4ec 100%);
+      color: #ff5277;
+      border: 1.5px solid var(--primary-pink);
+    }
+
+    .introvert-tag {
+      background: linear-gradient(135deg, #fbf2ee 0%, #f7e1d7 100%);
+      color: #c95d4e;
+      border: 1.5px solid #f5cac3;
     }
 
     .about-bio-text {
@@ -1269,36 +1314,82 @@
       </div>
 
       <div class="about-card-banner">
-        <p class="about-bio-text">
-          嗨！我是<strong>陳稚涵</strong> 👋。<br>
-          我擁有像變色龍般靈活的適應力，<strong>「可以隨時切換內、外向」</strong>是我的專屬特質！<br>
-          靜下來時，我喜歡沉浸在收藏與整理自己珍藏物品的小天地裡；<br>
-          動起來時，我又能在運動場上燃燒熱血、全心投入每場賽事與社交活動！
-        </p>
+        <!-- 外向模式內容 (預設顯示) -->
+        <div id="aboutExtrovert" class="about-mode-view active">
+          <div class="mode-tag-pill extrovert-tag">
+            <span>🔥</span> 外向活力模式・熱血社交狀態
+          </div>
+          <p class="about-bio-text">
+            嗨！我是<strong>陳稚涵</strong> 👋。<br>
+            當我切換到<strong>「外向模式」</strong>時，我是運動場上的熱血健將與活動中的活力發電機！⚡<br>
+            我喜歡在運動比賽中全力以赴、享受團隊齊心協力的默契，也能在聚會活動中主動與新朋友打成一片。<br>
+            只要站上賽場或走進人群，就能隨時燃燒滿滿的熱情與歡樂能量！🏃‍♀️✨
+          </p>
 
-        <!-- 亮點屬性小卡 -->
-        <div class="quick-info-grid">
-          <div class="quick-info-item">
-            <div class="quick-icon-box">🎀</div>
-            <div>
-              <div class="quick-item-label">風格偏好</div>
-              <div class="quick-item-val">可愛療癒 & 溫暖粉嫩</div>
+          <!-- 亮點屬性小卡 (外向) -->
+          <div class="quick-info-grid">
+            <div class="quick-info-item">
+              <div class="quick-icon-box">🔥</div>
+              <div>
+                <div class="quick-item-label">社交動能</div>
+                <div class="quick-item-val">熱情活潑・快速破冰</div>
+              </div>
+            </div>
+
+            <div class="quick-info-item">
+              <div class="quick-icon-box">🏃‍♀️</div>
+              <div>
+                <div class="quick-item-label">當前狀態</div>
+                <div class="quick-item-val">全速衝刺・運動競賽中</div>
+              </div>
+            </div>
+
+            <div class="quick-info-item">
+              <div class="quick-icon-box">🏆</div>
+              <div>
+                <div class="quick-item-label">模式最愛</div>
+                <div class="quick-item-val">熱血運動比賽 & 團體活動</div>
+              </div>
             </div>
           </div>
+        </div>
 
-          <div class="quick-info-item">
-            <div class="quick-icon-box">⚡</div>
-            <div>
-              <div class="quick-item-label">特質超能力</div>
-              <div class="quick-item-val">隨時切換內向／外向</div>
-            </div>
+        <!-- 內向模式內容 (按下內向時顯示) -->
+        <div id="aboutIntrovert" class="about-mode-view">
+          <div class="mode-tag-pill introvert-tag">
+            <span>🌿</span> 內向放鬆模式・靜心充電狀態
           </div>
+          <p class="about-bio-text">
+            嗨！我是<strong>陳稚涵</strong> 🌸。<br>
+            當我切換到<strong>「內向模式」</strong>時，我是細膩溫柔的觀察者與生活寶藏收藏家～🧸<br>
+            我享受一個人安靜獨處的時光，沉浸在整理自己的專屬收藏小天地，將每份回憶細心珍藏；<br>
+            此時的我心思細膩、專注力極高，在寧靜中沉澱自我、蓄滿滿滿的心靈力量！☕✨
+          </p>
 
-          <div class="quick-info-item">
-            <div class="quick-icon-box">🏆</div>
-            <div>
-              <div class="quick-item-label">最熱衷的事</div>
-              <div class="quick-item-val">運動比賽 & 團隊挑戰</div>
+          <!-- 亮點屬性小卡 (內向) -->
+          <div class="quick-info-grid">
+            <div class="quick-info-item">
+              <div class="quick-icon-box">🧸</div>
+              <div>
+                <div class="quick-item-label">專屬小天地</div>
+                <div class="quick-item-val">細心整理・個人寶藏庫</div>
+              </div>
+            </div>
+
+            <div class="quick-info-item">
+              <div class="quick-icon-box">🌿</div>
+              <div>
+                <div class="quick-item-label">當前狀態</div>
+                <div class="quick-item-val">深度放鬆・靜心充電中</div>
+              </div>
+            </div>
+
+            <div class="quick-info-item">
+              <div class="quick-icon-box">🎀</div>
+              <div>
+                <div class="quick-item-label">模式最愛</div>
+                <div class="quick-item-val">珍藏紀念票根 & 療癒小物</div>
+              </div>
             </div>
           </div>
         </div>
@@ -1524,6 +1615,8 @@
       const btnExtrovert = document.getElementById('btnExtrovert');
       const avatarEmoji = document.getElementById('avatarEmoji');
       const personalityTip = document.getElementById('personalityTip');
+      const aboutExtrovert = document.getElementById('aboutExtrovert');
+      const aboutIntrovert = document.getElementById('aboutIntrovert');
 
       if (mode === 'introvert') {
         body.classList.remove('mode-extrovert');
@@ -1532,7 +1625,14 @@
         btnExtrovert.classList.remove('active');
         avatarEmoji.textContent = '🧸';
         personalityTip.innerHTML = '切換至 <span>內向放鬆模式</span>：靜心享受收藏小天地、整理回憶與沉澱自我～☕';
-        showToast('已切換至「內向模式」：充電放鬆中 🧸');
+
+        // 動態切換「關於我」內容至內向模式
+        if (aboutExtrovert && aboutIntrovert) {
+          aboutExtrovert.classList.remove('active');
+          aboutIntrovert.classList.add('active');
+        }
+
+        showToast('已切換至「內向模式」：「關於我」也同步變身囉 🧸');
       } else {
         body.classList.remove('mode-introvert');
         body.classList.add('mode-extrovert');
@@ -1540,7 +1640,14 @@
         btnIntrovert.classList.remove('active');
         avatarEmoji.textContent = '🏃‍♀️';
         personalityTip.innerHTML = '切換至 <span>外向活力模式</span>：全力以赴衝刺、熱情參加比賽與朋友交流！✨';
-        showToast('已切換至「外向模式」：熱血運動走起 🏃‍♀️');
+
+        // 動態切換「關於我」內容至外向模式
+        if (aboutExtrovert && aboutIntrovert) {
+          aboutIntrovert.classList.remove('active');
+          aboutExtrovert.classList.add('active');
+        }
+
+        showToast('已切換至「外向模式」：「關於我」也同步變身囉 🏃‍♀️');
       }
     }
 
